@@ -34,3 +34,16 @@ A web platform that collects events from Telegram and allows users to register v
 - Organizer accounts
 
 
+# Backend Server
+
+Simple Node.js backend for Eventify
+
+## Tech Stack
+- Node.js
+- Express
+- Yarn
+
+## How to Run
+```bash
+yarn install
+yarn start
