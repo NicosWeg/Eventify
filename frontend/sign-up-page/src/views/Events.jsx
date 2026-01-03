@@ -12,6 +12,7 @@ const scrollUp = () => {
 
 const directLink = (link) => {
   // navigate to the link
+  return link;
 }
 
 const Events = () => {
@@ -126,6 +127,7 @@ const Events = () => {
             </Link>
           </li>
         </ul>
+        <button className={style.seeMore}>See more</button>
       </div>
       <button className={style.scrollToTop} aria-label="Scroll to top" onClick={scrollUp}></button>
     </>

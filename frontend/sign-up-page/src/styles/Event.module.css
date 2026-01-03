@@ -1,9 +1,22 @@
+:root {
+  --event-background: #080808;
+  --weight-reg: 400;
+  --weight-bold: 600;
+  --weight-extra: 800;
+  --padding-std: 0.75rem;
+  --radius-std: 0.75rem;
+  --primary-white: #fff;
+  --secondary-gray: rgb(176, 176, 176);
+  --color-primary-light: rgb(74, 74, 74); /* For hover */
+}
+
 ::after,
 ::before,
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 .pageWrapper {
@@ -11,7 +24,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background-color: #080808;
+  background-color: var(--event-background);
   position: relative;
   overflow-x: hidden;
 }
@@ -21,33 +34,30 @@ body {
   flex-direction: column;
   border-radius: 1%;
   margin: 10px auto;
-  padding: 0.75rem;
-  width: 100%;
-  max-width: 100%;
+  padding: var(--padding-std);
+  width: 90%;
+  max-width: 800px;
   flex: 1;
-  box-sizing: border-box;
   overflow-x: hidden;
 }
 
 .title {
   font-size: 1.5rem;
-  font-weight: 800;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: var(--weight-extra);
   padding: 0;
   margin: 0;
-  color: #ffffff;
+  color: var(--color-white);
   text-decoration: none;
 }
 
 header {
   margin: 0;
-  padding: 0.75rem;
+  padding: var(--padding-std);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
-  box-sizing: border-box;
   flex-shrink: 0;
 }
 
@@ -56,29 +66,41 @@ header {
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #ffffff;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease-in-out;
   padding: 0.5rem;
 }
 
 .backButton:hover {
-  color: #a0a0a0;
+  opacity: 0.7;
+}
+
+/* Target the 'X' in Webkit browsers */
+input[type="search"]::-webkit-search-cancel-button {
+  /* Remove default appearance */
+  -webkit-appearance: none;
+
+  /* Create your own custom 'X' */
+  height: 16px;
+  width: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
+  background-size: contain;
+  cursor: pointer;
 }
 
 
 .eventImageBox {
-  border: 1px solid wheat;
+  border: 1px solid var(--color-white);
   height: 20rem;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .eventImageBox img {
   object-fit: cover;
-
 }
 
 .eventInfo {
@@ -103,30 +125,27 @@ header {
 
 .eventTitle {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: var(--weight-extra);
+  color: var(--primary-white);
   line-height: 1.3;
   letter-spacing: -0.02em;
 }
 
 .eventTime {
   font-size: 1rem;
-  font-weight: 600;
-  color: #a0a0a0;
+  font-weight: var(--weight-bold);
+  color: var(--secondary-gray);
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   white-space: nowrap;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 .eventSubtitle {
   font-size: 1rem;
-  color: #b0b0b0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  font-weight: 400;
+  color: var(--secondary-gray);
+  font-weight: var(--weight-reg);
 }
 
 .container hr {
@@ -141,18 +160,16 @@ header {
 
 .eventDescTitle {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: var(--font-extra);
+  color: var(--primary-white);
+  margin-bottom: var(--padding-std);
 }
 
 .eventDescText {
   font-size: 0.95rem;
-  color: #d0d0d0;
+  color: var(--secondary-gray);
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  font-weight: 400;
+  font-weight: var(--weight-reg);
 }
 
 .linkBox {
@@ -161,44 +178,38 @@ header {
 
 .linkTitle {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: var(--font-extra);
+  color: var(--primary-white);
+  margin-bottom: var(--padding-std);
 }
 
 .linkBox a {
-  color: #4a9eff;
+  color: #69afff;
   text-decoration: none;
   font-size: 0.95rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   transition: color 0.2s ease;
   display: inline-block;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.linkBox a:hover {
-  color: #6bb3ff;
-  text-decoration: underline;
-}
-
 /* Tablet and Desktop */
 @media (min-width: 768px) {
-  .container {
+  .container,
+  header {
     width: 90%;
-    max-width: 1200px;
+    max-width: 800px;
+  }
+  .container {
     margin: 20px auto;
     padding: 2rem;
   }
-  
+
   header {
-    width: 90%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
   }
-  
+
   .title {
     font-size: 2rem;
     padding: 0;
@@ -208,33 +219,33 @@ header {
     max-width: 100%;
     margin: 0 auto 2rem;
   }
-  
+
   .eventImageBox img {
     min-height: 400px;
   }
-  
+
   .eventTitle {
     font-size: 2rem;
   }
-  
+
   .eventTime {
     font-size: 1.1rem;
     padding: 10px 20px;
   }
-  
+
   .eventSubtitle {
     font-size: 1.1rem;
   }
-  
+
   .eventDescTitle,
   .linkTitle {
     font-size: 1.4rem;
   }
-  
+
   .eventDescText {
     font-size: 1rem;
   }
-  
+
   .linkBox a {
     font-size: 1rem;
   }

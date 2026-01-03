@@ -1,3 +1,13 @@
+:root {
+  --primary-font: sans-serif;
+  --page-background: #080808;
+  --log-box-background: #171717;
+  --log-box-border: #62626239;
+  --log-box-shadow: rgba(0, 0, 0, 0.5);
+}
+
+
+
 /* This replaces your #root styling */
 .loginPageWrapper {
   display: flex;
@@ -5,7 +15,7 @@
   justify-content: center;
   min-height: 100vh;
   width: 100vw;
-  background-color: #080808;
+  background-color: var(--page-background);
   position: fixed; /* Ensures it covers the whole screen */
   top: 0;
   left: 0;
@@ -15,19 +25,19 @@
   width: 100%;
   max-width: 360px;
   padding: 40px 24px;
-  background-color: #171717;
-  border: 1px solid #62626239;
+  background-color: var(--log-box-background);
+  border: 1px solid var(--log-box-border);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px var(--log-box-shadow);
   z-index: 1; /* Sits on top of the wrapper */
 }
 /* ... keep the rest of your button and text styles below ... */
 .title {
   font-size: 3rem;
   font-weight: 800;
-  font-family: sans-serif;
+  font-family: var(--primary-font);
   color: #ffffff;
   margin-bottom: 8px;
   text-align: center;
@@ -35,7 +45,7 @@
 
 .subTitle {
   font-size: 0.9rem;
-  font-family: sans-serif;
+  font-family: var(--primary-font);
   color: #888;
   margin-bottom: 32px;
   text-align: center;
@@ -57,8 +67,8 @@
 }
 
 .googleBtn {
-  font-family: sans-serif;
-  font-weight: 600;
+  font-family: var(--primary-font);
+  font-weight: 400;
   background-color: #ffffff;
   color: #000;
   margin-bottom: 12px;
@@ -95,7 +105,7 @@
   margin: 24px 0;
   color: #7c7b7b;
   font-size: 13px;
-  font-family: sans-serif;
+  font-family: var(--primary-font);
 }
 
 hr {
@@ -107,7 +117,7 @@ hr {
 .docInfo {
   margin-top: 24px;
   text-align: center;
-  font-family: sans-serif;
+  font-family: var(--primary-font);
 }
 
 .docInfoText {
