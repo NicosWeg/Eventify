@@ -1,4 +1,7 @@
 TODO.md
 .env
 node_modules
-.yarn/unplugged
+*.session
+anon.session
+dist/
+build/

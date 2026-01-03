@@ -1,0 +1,41 @@
+/* This replaces your #root styling */
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #080808;
+  position: fixed; /* Ensures it covers the whole screen */
+  top: 0;
+  left: 0;
+}
+
+.container {
+  margin-top: 10rem;
+}
+.errorBox {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorSubText {
+  opacity: 0.8;
+}
+
+.backBtn {
+  background-color: rgb(222, 222, 222);
+  margin-top: 1rem;
+  width: 20rem;
+  vertical-align: middle;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  transition: .2s ease-in-out opacity;
+}
+
+.backBtn:hover {
+  opacity: .8;
+}
