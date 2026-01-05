@@ -24,7 +24,15 @@ const signInWithGoogle = async () => {
     },
   });
 
-  return res;
+  const getUserName = await fetch("http://localhost:3000/getUserName", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  });
+
+
+  return {res, getUserName};
 };
 
 export default signInWithGoogle;

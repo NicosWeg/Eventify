@@ -428,15 +428,10 @@ header {
   border: none;
   color: var(--color-white);
   padding: 0.75rem 1rem;
-  width: 100%;
   text-align: left;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color var(--animation-fast);
-}
-
-.profileInBtn:hover {
-  background-color: var(--border-color);
 }
 
 .scrollToTop {

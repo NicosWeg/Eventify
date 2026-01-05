@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/login" element={<App />} />
         <Route path="/" element={<Events />} />
         <Route path="/event" element={<Event />} />
-        <Route path="/error" element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

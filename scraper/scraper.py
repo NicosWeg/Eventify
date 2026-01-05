@@ -16,23 +16,13 @@ api_hash = os.getenv("API_HASH")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
-# Validate Supabase environment variables
-if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
-    missing = [var for var, val in [("SUPABASE_URL", SUPABASE_URL), ("SUPABASE_SERVICE_ROLE_KEY", SUPABASE_SERVICE_ROLE_KEY)] if not val]
-    raise ValueError(f"Missing required Supabase environment variables: {', '.join(missing)}")
-
 # Connect to Supabase
 try:
     supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
     print("✅ Supabase connection successful!")
-    
-    # Test connection by querying a simple table (adjust table name as needed)
-    # This is optional - remove if you don't have a test table
-    # result = supabase.table("events").select("count").limit(1).execute()
-    # print("✅ Database connection verified")
 except Exception as e:
     print(f"❌ Failed to connect to Supabase: {e}")
-    raise
+
 if not api_id or not api_hash:
     raise ValueError("Error: API_ID or API_HASH is not found")
 

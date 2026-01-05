@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import style from "../styles/Events.module.css";
 import { useState } from "react";
 import image from "../assets/event_poster.jpg";
+import signInWithGoogle from "../db/googleSign.js";
 
 const scrollUp = () => {
   window.scrollTo({
@@ -16,6 +17,7 @@ const directLink = (link) => {
 }
 
 const Events = () => {
+  const res = signInWithGoogle.getUserName;
   const [value, setValue] = useState(true);
   return (
     <>
@@ -31,7 +33,7 @@ const Events = () => {
           className={style.profileIn}
           style={{ visibility: value ? "hidden" : "visible" }}
         >
-          <span className={style.profileInTitle}>Username</span>
+          <span className={style.profileInTitle}>{res?res:"Anonim"}</span>
           <Link to="/login">
             <button className={style.profileInBtn}>Chiqish</button>
           </Link>
