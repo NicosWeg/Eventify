@@ -4,9 +4,9 @@ import cors from "cors";
 import { config } from "./config/env.js";
 
 // Import Routes
-import authRoutes from "./routes/auth.routes.js";
-import userRoutes from "./routes/user.routes.js";
-import eventsRoutes from "./routes/events.routes.js";
+import {router as authRoutes} from "./routes/auth.routes.js";
+import {router as userRoutes} from "./routes/user.routes.js";
+import {router as eventsRoutes} from "./routes/events.routes.js";
 // Config
 const app = express();
 

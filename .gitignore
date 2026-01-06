@@ -2,6 +2,6 @@ TODO.md
 .env
 node_modules
 *.session
-anon.session
+scraper/anon.session
 dist/
 build/

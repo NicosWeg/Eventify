@@ -1,9 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
+import supabase from "./supabase";
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY
-);
 const signInWithGoogle = async () => {
   await supabase.auth.signInWithOAuth({
     provider: "google",
@@ -13,26 +9,12 @@ const signInWithGoogle = async () => {
   if (!data.session) {
     return {success: false, message: 'User not logged'}
   };
+
   const accessToken = data.session.access_token;
 
   console.log("JWT:", accessToken);
 
-  const res = await fetch("http://localhost:3000/logIn", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-
-  const getUserName = await fetch("http://localhost:3000/getUserName", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  });
-
-
-  return {res, getUserName};
+  return {token: accessToken};
 };
 
 export default signInWithGoogle;

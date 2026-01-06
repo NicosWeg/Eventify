@@ -4,9 +4,9 @@ import { getClientIp } from "../utils/helpers.js";
 import { authUser } from "../middleware/auth.js";
 import express from "express";
 
-const authRoutes = express.Router();
+export const router = express.Router();
 
-authRoutes.post("/logIn", authUser, async (req, res) => {
+router.post("/logIn", authUser, async (req, res) => {
   try {
     const { id } = req.user;
     const userAgent = req.headers["user-agent"] || "Unknown";
@@ -39,5 +39,5 @@ authRoutes.post("/logIn", authUser, async (req, res) => {
   }
 });
 
-export default authRoutes;
+
 

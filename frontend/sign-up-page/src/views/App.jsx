@@ -3,7 +3,7 @@ import signInWithGoogle from "../db/googleSign.js";
 import { useNavigate } from "react-router-dom";
 import g from "../assets/g.svg";
 import p from "../assets/p.svg";
-import CursorLight from '../views/pageAnimations/Spotlight.jsx';
+
 function App() {
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ function App() {
           className={style.googleBtn}
           onClick={async () => {
             const res = await signInWithGoogle();
-            navigate(res.ok ? "/events" : "/login");
+            navigate(res.ok ? "/" : "/login");
           }}
         >
           <div className={style.googleBtnIn}>

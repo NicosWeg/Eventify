@@ -1,9 +1,9 @@
 import express from "express";
+import { supabase } from "../config/database.js";
 
-const userRoutes = express.Router();
+export const router = express.Router();
 
-
-userRoutes.get("/getUserName", async (req, res) => {
+router.get("/getUserName", async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) return res.json({ user_name: "anonim", loggedIn: false });
@@ -32,5 +32,3 @@ userRoutes.get("/getUserName", async (req, res) => {
     res.status(500).json({ message: "Server error", success: false });
   }
 });
-
-export default userRoutes;

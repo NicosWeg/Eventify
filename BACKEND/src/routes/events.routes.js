@@ -1,14 +1,15 @@
 import express from "express"
 import {supabase} from "../config/database.js";
-const eventsRoutes = express.Router(); 
+import { authUser } from "../middleware/auth.js";
+export const router = express.Router(); 
 
-eventsRoutes.get("/events", async (req, res) => {
+router.get("/events", authUser, async (req, res) => {
   const { data, error } = await supabase.from("events").select("*");
   if (error) {
     console.error({error: error.message})
-    return res.status(500).json("Error occured")
+    return res.status(500).json({error: error.message, success: false})
   };
+  console.log(data);
   res.json(data);
 });
 
-export default eventsRoutes;
