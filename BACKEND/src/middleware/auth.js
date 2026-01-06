@@ -2,6 +2,7 @@ import { sendError, sendSuccess } from "../utils/response.js";
 import {supabase} from "../config/database.js";
 
 export const authUser = async (req, res, next) => {
+  if (req.headers["Authorization"] === 'anon') next();
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {

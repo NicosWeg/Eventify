@@ -3,13 +3,11 @@ import signInWithGoogle from "../db/googleSign.js";
 import { useNavigate } from "react-router-dom";
 import g from "../assets/g.svg";
 import p from "../assets/p.svg";
-
 function App() {
   const navigate = useNavigate();
 
   return (
     <div className={style.loginPageWrapper}>
-      <CursorLight />
       <div className={style.container}>
         <h1 className={style.title}>Eventify</h1>
         <p className={style.subTitle}>Endi hamma tadbirlar bir joyda</p>
@@ -33,7 +31,12 @@ function App() {
           <hr />
         </div>
 
-        <button className={style.anonimBtn}>
+        <button
+          className={style.anonimBtn}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <div className={style.anonimBtnIn}>
             <img src={p} alt="person" width={18} />
             <span>Anonim bo'lib kirish</span>

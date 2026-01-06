@@ -1,33 +1,10 @@
 import style from "../../styles/Events.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getUserName } from "../../db/fetches";
 
 export const Header = () => {
-  const [userName, setUserName] = useState(null);
   const [value, setValue] = useState(true);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    const fetchName = async () => {
-      try {
-        const response = await getUserName();
-        if (!abortController.signal.aborted) {
-          const data = await response.json();
-          setUserName(data.user_name);
-        }
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          console.error("Failed to fetch user name:", error);
-        }
-      }
-    };
-
-    fetchName();
-
-    return () => abortController.abort();
-  }, []);
+  const userName = "Anonim";
   return (
     <header>
       <div className={style.title}>Eventify</div>

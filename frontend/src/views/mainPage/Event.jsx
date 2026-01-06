@@ -1,30 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import style from "../../styles/Event.module.css";
-import { getEventList } from "../../db/fetches.js";
 import { useEffect, useState } from "react";
+import { getEventById } from "../../db/mockData";
+
 const Event = () => {
+  const { id } = useParams();
   const [eventData, setEventData] = useState(null);
 
   useEffect(() => {
-    const abortController = new AbortController();
-
-    const fetchData = async () => {
-      try {
-        const result = await getEventList();
-        if (!abortController.signal.aborted) {
-          setEventData(result);
-        }
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          console.error("Failed to fetch event data:", error);
-        }
-      }
+    let mounted = true;
+    (async () => {
+      const e = await getEventById(id);
+      if (mounted) setEventData(e);
+    })();
+    return () => {
+      mounted = false;
     };
-
-    fetchData();
-
-    return () => abortController.abort();
-  }, []);
+  }, [id]);
   return (
     <div className={style.pageWrapper}>
       <header>
@@ -41,8 +33,10 @@ const Event = () => {
         </div>
         <div className={style.eventInfo}>
           <div className={style.eventInfoItem}>
-            <div className={style.eventTitle}>American Tashkent Center</div>
-            <div className={style.eventTime}>{eventData?.data[0].time}</div>
+            <div className={style.eventTitle}>
+              {eventData?.title || "Event"}
+            </div>
+            <div className={style.eventTime}>{eventData?.time || ""}</div>
           </div>
           <div className={style.eventInfoItem2}>
             <div className={style.eventSubtitle}></div>
@@ -52,16 +46,16 @@ const Event = () => {
         <div className={style.eventDescBox}>
           <div className={style.eventDescTitle}>Description</div>
           <div className={style.eventDescText}>
-            {eventData?.data[0]?.content || "Loading..."}
+            {eventData?.content || "Loading..."}
           </div>
         </div>
         <div className={style.linkBox}>
           <div className={style.linkTitle}>Date</div>
-          <span>{eventData?.data[0].date}</span>
+          <span>{eventData?.date || ""}</span>
         </div>
         <div className={style.linkBox}>
           <div className={style.linkTitle}>Location</div>
-          <span>{eventData?.data[0].date}</span>
+          <span>{eventData?.location || ""}</span>
         </div>
         <div className={style.linkBox}>
           <div className={style.linkTitle}>Links</div>

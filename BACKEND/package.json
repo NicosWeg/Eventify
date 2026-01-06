@@ -10,12 +10,10 @@
     "jsonwebtoken": "^9.0.3"
   },
   "devDependencies": {
-    "@prisma/engines": "^7.1.0",
     "nodemon": "^3.1.11"
   },
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/app.js",
-    "db:push": "prisma db push"
+    "start": "node src/server.js"
   }
 }

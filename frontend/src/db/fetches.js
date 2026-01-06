@@ -11,6 +11,15 @@ export const logIn = async () => {
   });
 };
 
+export const anonRequest = async () => {
+  return fetch(`${API_URL}/`, {
+    method: "GET",
+    headers: {
+      Authorization: "anon",
+    },
+  });
+};
+
 export const getUserName = async () => {
   const token = await googleOauth();
   return fetch(`${API_URL}/getUserName`, {
@@ -23,7 +32,7 @@ export const getUserName = async () => {
 
 export const getEventList = async () => {
   try {
-    const response = await fetch(`${API_URL}/events`, {
+    const response = await fetch(`${API_URL}/`, {
       method: "GET",
     });
     if (response.ok) {
